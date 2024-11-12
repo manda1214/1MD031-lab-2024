@@ -14,18 +14,21 @@
                 <h3>Burger Menu</h3>
                 <p>
                     All burgers available down below.
+                </p>
                     <div style="display: inline-block">
                         <header>
                             <h4>Original Burger</h4>
                         </header>
                         <section>
-                            <img src="https://ribsandburgers.com/au/wp-content/uploads/2023/04/butcher-original.jpg" alt="original burger" title="Original burger" style="height:150px">
+                            <p>
+                                <img src="https://ribsandburgers.com/au/wp-content/uploads/2023/04/butcher-original.jpg" alt="original burger" title="Original burger" style="height:200px">
                             <br \>
                             <ul>
                                 <li>beef</li>
                                 <li>lactose</li>
                                 <li>gluten</li>
                             </ul>
+                            </p>
                         </section>
                     </div>
 
@@ -34,13 +37,15 @@
                             <h4>Chicken Burger</h4>
                         </header>
                         <section>
-                            <img src="https://www.cookwithnabeela.com/wp-content/uploads/2024/05/FriedChickenBurgers.webp" alt="chicken burger" title="Chicken burger" style="height:150px">
+                            <p>
+                                <img src="https://www.cookwithnabeela.com/wp-content/uploads/2024/05/FriedChickenBurgers.webp" alt="chicken burger" title="Chicken burger" style="height:200px">
                             <br \>
                             <ul>
                                 <li>chicken</li>
                                 <li>lactose</li>
                                 <li>gluten</li>
                             </ul>
+                            </p>
                         </section>
                     </div>
 
@@ -49,29 +54,70 @@
                             <h4>Halloumi Burger</h4>
                         </header>
                         <section>
-                            <img src="https://art.whisk.com/image/upload/fl_progressive,h_560,w_560,c_fill,dpr_2.0/v1590438305/recipe/e2103300a10a4fade48f4fd21202c084.jpg" alt="halloumi burger" title="Halloumi burger" style="width:150px">
-                            <br \>
-                            <ul>
-                                <li>halloumi</li>
-                                <li>lactose</li>
-                                <li>gluten</li>
+                            <p>
+                                <img src="https://art.whisk.com/image/upload/fl_progressive,h_560,w_560,c_fill,dpr_2.0/v1590438305/recipe/e2103300a10a4fade48f4fd21202c084.jpg" alt="halloumi burger" title="Halloumi burger" style="width:200px">
+                                <br \>
+                                <ul>
+                                    <li>halloumi</li>
+                                    <li>lactose</li>
+                                    <li>gluten</li>
                             </ul>
+                            </p>
                         </section>
                     </div>
-                </p>
             </section>
 
             <section>
                 <h3>Customer Information</h3>
                 <p>
                     Please add information below for delivery. 
+                    <h4>Delivery Information</h4>
                 </p>
+                <form>
+                    <p>
+                        <label for="name">Full Name</label><br>
+                        <input type="text" id="name" name="fn" required="required" placeholder="First and Last name">
+                    </p>
+                    <p>
+                        <label for="gender">Gender</label><br>
+                        <input type="radio" id="gender" name="gender" value="Male">
+                        <label for="gender">Male</label><br>
+                        <input type="radio" id="gender" name="gender" value="Female">
+                        <label for="gender">Female</label><br>
+                        <input type="radio" id="gender" name="gender" checked="checked" value="Do not wish to provide">
+                        <label for="gender">Do not wish to provide</label><br>
+                    </p>
+                    <p>
+                        <label for="email">E-mail</label><br>
+                        <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
+                    </p>
+                    <p>
+                        <label for="streetname">Street</label><br>
+                        <input type="text" id="streetname" name="st" required="required" placeholder="Street name">
+                    </p>
+                    <p>
+                        <label for="streetno">Street number</label><br>
+                        <input type="number" id="streetno" name="no" required="required" placeholder="Street number">
+                    </p>
+                    <p>
+                        <label for="payment">Payment Method</label><be><br>
+                        <select id="payment" name="pmm">
+                            <option selected="selected">Card</option>
+                            <option>Swish</option>
+                            <option>Klarna</option>
+                            <option>Cash</option>
+                        </select>
+                     </p>
+                     <p>
+                        <input type="submit" value="Send">
+                     </p>
+                </form>
             </section>
         </main>
 
         <hr>
         <footer>
-            &copy;
+            &copy;2024 BurgerOnline
         </footer>
    </body>
 
