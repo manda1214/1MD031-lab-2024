@@ -1,4 +1,4 @@
-<template>
+<template> <!--vanlig html-->
 <div>
     <div>
     <h1>Burgers</h1>
@@ -12,7 +12,7 @@
 </div>
 </template>
 
-<script>
+<script> //JS
 import Burger from '../components/OneBurger.vue'
 import io from 'socket.io-client'
 
