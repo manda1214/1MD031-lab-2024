@@ -27,6 +27,8 @@ h1 {
 #headertext {
     position: absolute;
     margin-top: -45%;
+    text-align: center;
+    width: 100%;
 }
 
 .allergener { /*för class*/
