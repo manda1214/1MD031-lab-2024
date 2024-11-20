@@ -1,116 +1,13 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-   <head>
-       <meta charset="utf-8"/>
-       <title>Order Burgers Online!</title>
-       <link rel="stylesheet" type="text/css" href="/css/style.css">
-   </head>
-   <body>
-        <header>
-            <div class="headercontent">
-                <img src="/img/backgroundheader.jpg" id="backgroundheader" alt="Header Image" title="Burger Bar">
-                <h1 id="headertext">Order Burgers Online</h1>
-            </div>
-        </header>
-        
-        <main>
-            <section id="menu">
-                <h3>Burger Menu</h3>
-                <p>
-                    All burgers available down below.
-                </p>
-                    <div class="wrapper">
-                        <div class="burgeritem burger1" style="display: inline-block">
-                                <h4>Original Burger</h4>
-                            <p>
-                                <img src="/img/originalburger.jpg" alt="original burger" title="Original burger" style="height:200px"><br \>
-                                <ul>
-                                    <li>The classic with a beef patty</li>
-                                    <li>Contains <span class="allergener">lactose</span></li>
-                                    <li>Contains <span class="allergener">gluten</span></li>
-                                </ul>
-                            </p>
-                        </div>
-                        <div class="burgeritem burger2" style="display: inline-block">
-                            <h4>Chicken Burger</h4>
-                            <p>
-                                <img src="/img/chickenburger.webp" alt="chicken burger" title="Chicken burger" style="height:200px"><br \>
-                                <ul>
-                                    <li>The crispy delight with a chicken patty</li>
-                                    <li>Contains <span class="allergener">lactose</span></li>
-                                    <li>Contains <span class="allergener">gluten</span></li>
-                                </ul>
-                            </p>
-                        </div>
-                        <div class="burgeritem burger3" style="display: inline-block">
-                            <h4>Halloumi Burger</h4>
-                            <p>
-                                <img src="/img/halloumiburger.jpg" alt="halloumi burger" title="Halloumi burger" style="width:200px"><br \>
-                                <ul>
-                                    <li>The vegetarian option with a halloumi patty</li>
-                                    <li>Contains <span class="allergener">lactose</span></li>
-                                    <li>Contains <span class="allergener">gluten</span></li>
-                                </ul>
-                            </p>
-                        </div>
-                    </div>
-            </section>
-
-            <section id="customerinformation">
-                <h3>Customer Information</h3>
-                <p>
-                    Please add information below for delivery. 
-                </p>
-                <h4>Delivery Information</h4>
-                <form>
-                    <p>
-                        <label for="name">Full Name</label><br>
-                        <input type="text" id="name" name="fn" required="required" placeholder="First and Last name">
-                    </p>
-                    <p>
-                        <label for="email">E-mail</label><br>
-                        <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
-                    </p>
-                    <p>
-                        <label for="streetname">Street</label><br>
-                        <input type="text" id="streetname" name="st" required="required" placeholder="Street name">
-                    </p>
-                    <p>
-                        <label for="streetno">Street number</label><br>
-                        <input type="number" id="streetno" name="no" required="required" placeholder="Street number">
-                    </p>
-                    <p>
-                        <label for="gender">Gender</label><br>
-                        <input type="radio" id="gender" name="gender" value="Male">
-                        <label for="gender">Male</label><br>
-                        <input type="radio" id="gender" name="gender" value="Female">
-                        <label for="gender">Female</label><br>
-                        <input type="radio" id="gender" name="gender" checked="checked" value="Do not wish to provide">
-                        <label for="gender">Do not wish to provide</label><br>
-                    </p>
-                    <p>
-                        <label for="payment">Payment Method</label><be><br>
-                        <select id="payment" name="pmm">
-                            <option selected="selected">Credit card</option>
-                            <option>Swish</option>
-                            <option>Klarna</option>
-                            <option>Cash</option>
-                        </select>
-                     </p>
-                </form>
-                <p>
-                    <button class="sendbutton" type="submit">
-                        Place order 
-                        <img src="/img/sendbutton.png" style="height:15px">
-                      </button>
-                </p>
-            </section>
-        </main>
-
-        <hr>
-        <footer>
-            &copy;2024 BurgerOnline
-        </footer>
-   </body>
-
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
