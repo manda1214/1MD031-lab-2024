@@ -12,7 +12,8 @@
       <div class="wrapper">
         <Burger v-for="burger in burgers"
         v-bind:burger="burger"
-        v-bind:key="burger.name"></Burger>
+        v-bind:key="burger.name"
+        v-on:orderedBurgers="addToOrder"></Burger> 
       </div>
     </section>
 
@@ -31,6 +32,8 @@
           <label for="email">E-mail</label><br>
           <input type="email" id="email" v-model="em" required="required" placeholder="E-mail address">
         </p>
+
+        <!-- Removing the street bc of the map
         <p>
           <label for="streetname">Street</label><br>
           <input type="text" id="streetname" v-model="st" required="required" placeholder="Street name">
@@ -39,6 +42,8 @@
           <label for="streetno">Street number</label><br>
           <input type="number" id="streetno" v-model="no" required="required" placeholder="Street number">
         </p>
+        -->
+
         <p>
           <label for="gender">Gender</label><br>
           <input type="radio" id="male" value="Male" v-model="gender">
@@ -58,12 +63,14 @@
           </select>
         </p>
         <div id="picture">
-          <div id="map" v-on:click="addOrder">
-            click here
+          <div id="map" v-on:click="setLocation">
+            <div id='position' v-bind:style="{ left: location.x + 'px', top: location.y + 'px', position: 'absolute'}">
+              T
+            </div>
           </div>
         </div>
       </form>
-      <button class="sendbutton" type="submit" v-on:click="console.log(this.fn, this.em, this.st, this.no, this.gender, this.pmm, this.orderedBurgers)">
+      <button class="sendbutton" type="submit" v-on:click="addOrder">
         Place order 
         <img src="/img/sendbutton.png" style="height:15px">
       </button>
@@ -116,29 +123,49 @@ export default {
                ],
       fn: '',
       em: '',
-      st: '',
-      no: '',
+      /*st: '',
+      no: '', */
       gender: 'Do not wish to provide',
       pmm: 'Credit card',
       orderedBurgers:{},
-      location: { x: 0,
-            y: 0
-          },
+      location: { x: 0, y: 0 },
+      ordernumber: 1,
     }
   },
   methods: {
     getOrderNumber: function () {
-      return Math.floor(Math.random()*100000);
+      return this.ordernumber++;
     },
     addOrder: function (event) {
-      var offset = {x: event.currentTarget.getBoundingClientRect().left,
-                    y: event.currentTarget.getBoundingClientRect().top};
       socket.emit("addOrder", { orderId: this.getOrderNumber(),
-                                details: { x: event.clientX - 10 - offset.x,
-                                           y: event.clientY - 10 - offset.y },
-                                orderItems: ["Beans", "Curry"]
+                                details: { x: this.location.x,
+                                           y: this.location.y,
+                                          name: this.fn,
+                                          email: this.em, 
+                                          paymentmethod: this.pmm,
+                                          gender: this.gender, 
+                                         },
+                                orderItems: this.orderedBurgers
                               }
                  );
+
+      const order = {
+      name: this.fn,
+      email: this.em, 
+      paymentmethod: this.pmm,
+      gender: this.gender, 
+      orderedBurgers: this.orderedBurgers  /*var ska jag lägga detta objekt??*/
+      }
+      console.log('new order: ', order );
+    },
+    addToOrder: function (event) {
+      this.orderedBurgers[event.name]=event.amount;
+    },
+    setLocation: function (event) {
+      var offset = {x: event.currentTarget.getBoundingClientRect().left,
+                    y: event.currentTarget.getBoundingClientRect().top};
+      this.location.x = event.clientX - offset.x;
+      this.location.y = event.clientY - offset.y;
     }
   }
 }
@@ -146,15 +173,27 @@ export default {
 
 <style>
   #map {
+    position: relative;
     background: url("/img/polacks.jpg");
     width: 1920px;
     height: 1078px;
   }
 
   #picture {
+    position: relative;
     width: 100%;
     height: 50vh;
     overflow: scroll;
+  }
+
+  #position {
+    position: absolute;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    width:20px;
+    height:20px;
+    text-align: center;
   }
 
   @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Pacifico&family=Satisfy&display=swap');

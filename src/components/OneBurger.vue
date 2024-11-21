@@ -8,7 +8,7 @@
       <li v-if="burger.gluten">Contains <span class="allergener">gluten</span></li>
       <li>{{ burger.kCal}} kCal</li>
     </ul>
-    <p>Amount ordered: {{ amountOrdered }}</p>
+    <p>Amount to order: {{ amountOrdered }}</p>
     <button class="addbutton" v-on:click="addBurger">
       +
     </button>
@@ -32,18 +32,18 @@ export default {
   methods: {
     addBurger: function () {
       this.amountOrdered++;
-      this.$emit('orderedBurger', { name:this.burger.name, amount:this.amountOrdered 
-      });
+      this.$emit('orderedBurgers', { name:this.burger.name, amount:this.amountOrdered
+      },
+    );
     },
     subtractBurger: function () {
       if (this.amountOrdered>0) {
         this.amountOrdered--;
-        this.$emit('orderedBurger', { name:this.burger.name, amount:this.amountOrdered
+        this.$emit('orderedBurgers', { name:this.burger.name, amount:this.amountOrdered
         });
       }
     }
   }
-
 }
 </script>
 
