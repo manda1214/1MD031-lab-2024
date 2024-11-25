@@ -1,21 +1,49 @@
 [{
     "name": "Original Burger", 
-    "kCal": 400, 
+    "text": "The classic with a beef patty",
+    "kCal": 500, 
     "url": "/img/originalburger.jpg",
     "lactose": true, 
     "gluten": true
 },
 {
     "name": "Chicken Burger", 
-    "kCal": 500, 
+    "text": "The crispy delight with a chicken patty", 
+    "kCal": 550, 
     "url": "/img/chickenburger.webp",
     "lactose": true, 
     "gluten": true
 },
 {
     "name": "Halloumi Burger", 
+    "text": "The vegetarian option with a halloumi patty",
     "kCal": 450, 
     "url": "/img/halloumiburger.jpg",
     "lactose": true, 
     "gluten": true
-}]
+},
+{
+    "name": "Spicy Burger", 
+    "text": "The spiciest option with a veggie patty",
+    "kCal": 520, 
+    "url": "/img/spicyburger.jpeg",
+    "lactose": true, 
+    "gluten": true
+},
+{
+    "name": "Fish Burger", 
+    "text": "The option with a crispy fish patty",
+    "kCal": 480, 
+    "url": "/img/fishburger.png",
+    "lactose": true, 
+    "gluten": false
+},
+{
+    "name": "Veggie Burger", 
+    "text": "The vegan delight with a green patty",
+    "kCal": 420, 
+    "url": "/img/veganburger.jpg",
+    "lactose": false, 
+    "gluten": true
+}
+]

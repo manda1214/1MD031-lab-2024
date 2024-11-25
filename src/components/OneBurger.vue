@@ -1,9 +1,9 @@
 <template>
   <div class="burgeritem">
     <h4>{{ burger.name }}</h4>
-    <img v-bind:src="burger.url" style="height:200px"><br>
+    <img v-bind:src="burger.url" style="width:200px"><br>
     <ul>
-      <li>The classic with a beef patty</li>
+      <li>{{burger.text}}</li>
       <li v-if="burger.lactose">Contains <span class="allergener">lactose</span></li>
       <li v-if="burger.gluten">Contains <span class="allergener">gluten</span></li>
       <li>{{ burger.kCal}} kCal</li>
@@ -51,7 +51,14 @@ export default {
 <style scoped>
   .burgeritem {
     margin: 0.5em;
-    padding: 0.5em;
+    padding: 1em;
+    border-style: groove;
+    border-color: #5c2c13;
+    border-width: 8px;
+    align-items: center; 
+  }
+  .burgeritem h4 {
+  text-align: center;
   }
   .allergener { /*för class*/
     font-weight: bold;

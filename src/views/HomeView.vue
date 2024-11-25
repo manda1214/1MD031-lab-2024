@@ -3,12 +3,14 @@
   <header>
     <div class="headercontent">
       <img src="/img/backgroundheader.jpg" id="backgroundheader" alt="Header Image" title="Burger Bar">
-      <h1 id="headertext">Order Burgers Online</h1>
+      <h1 id="headertext">Welcome to BurgerOnline!</h1>
     </div>
   </header>
         
   <main>
     <section id="menu">
+      <h3>Menu</h3>
+      <p>Please enter the burgers you wish to order down below. </p>
       <div class="wrapper">
         <Burger v-for="burger in burgers"
         v-bind:burger="burger"
@@ -109,6 +111,9 @@ const halloumiBurger = new MenuItem('Halloumi Burger', '/img/halloumiburger.jpg'
 const originalBurger = menu[0];
 const chickenBurger = menu[1];
 const halloumiBurger = menu[2];
+const spicyBurger = menu[3];
+const fishBurger = menu[4];
+const veganBurger = menu[5];
 
 export default {
   name: 'HomeView',
@@ -119,7 +124,10 @@ export default {
     return {
       burgers: [ originalBurger, 
                  chickenBurger, 
-                 halloumiBurger
+                 halloumiBurger, 
+                 spicyBurger,
+                 fishBurger,
+                 veganBurger
                ],
       fn: '',
       em: '',
@@ -148,15 +156,6 @@ export default {
                                 orderItems: this.orderedBurgers
                               }
                  );
-
-      const order = {
-      name: this.fn,
-      email: this.em, 
-      paymentmethod: this.pmm,
-      gender: this.gender, 
-      orderedBurgers: this.orderedBurgers  /*var ska jag lägga detta objekt??*/
-      }
-      console.log('new order: ', order );
     },
     addToOrder: function (event) {
       this.orderedBurgers[event.name]=event.amount;
@@ -172,51 +171,24 @@ export default {
 </script>
 
 <style>
-  #map {
-    position: relative;
-    background: url("/img/polacks.jpg");
-    width: 1920px;
-    height: 1078px;
-  }
-
-  #picture {
-    position: relative;
-    width: 100%;
-    height: 50vh;
-    overflow: scroll;
-  }
-
-  #position {
-    position: absolute;
-    background: black;
-    color: white;
-    border-radius: 10px;
-    width:20px;
-    height:20px;
-    text-align: center;
-  }
-
   @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Pacifico&family=Satisfy&display=swap');
   body {
     font-size: 14pt;
   }
-
-  /*
-  p {
-    color: #333333;
-  }*/
-
   h1 {
     font-family: 'Lora', serif;
     font-size: 40pt;
   }
+  h3 {
+    font-size: 20pt;
+  }
 
+  /* for the header */
   .headercontent {
     margin: 1em;
     height: 200px;
     overflow: hidden;
   }
-
   #backgroundheader {
     opacity: 0.8; 
     width: 100%;
@@ -227,21 +199,12 @@ export default {
     margin-top: -45%;
     text-align: center;
     width: 100%;
-  }
+  }  
 
-  .allergener { /*för class*/
-    font-weight: bold;
-  }
-  
-  #customerinformation { /*för id*/
-    padding: 1em;
-    background-color: #F5E6CC;
-  }
-
+  /* for the menu */
   #menu {
     background-color: #FAF8F1;
   }
-
   section#menu {
     color: #333333;
     margin: 1em;
@@ -250,36 +213,53 @@ export default {
     border-color: #556B2F;
     border-width: 10px;
   }
+  .wrapper {
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: 15em 15em 15em;
+    /*repeat(auto-fit, minmax(250px, 1fr));
+    width: 100%;
+    box-sizing: border-box; */
+  }
 
+  /* for customers to fill in */
+  #customerinformation { 
+    padding: 1em;
+    background-color: #F5E6CC;
+  }
   section#customerinformation {
-    color: #4E3629;
     margin: 1em;
     padding: 1em;
     border: double;
     border-color: #556B2F;
     border-width: 10px;
   }
-
-  .wrapper {
-    display: grid;
-    grid-gap: 0.5em;
-    grid-template-columns: 14em 14em 14em;
-  }
-  .burgeritem {
-    margin: 0.5em;
-    padding: 0.5em;
-    /*border-style: double;
-    border-color: #556B2F;
-    border-width: 10px;
-    width: 12em;
-    height: 20em;*/
-  }
-
   .sendbutton {
     margin-top: 1em;
   }
   button:hover {
     background-color: #556B2F; /* changes color when hover over */
     color: white;
+  }
+  #map {
+    position: relative;
+    background: url("/img/polacks.jpg");
+    width: 1920px;
+    height: 1078px;
+  }
+  #picture {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    overflow: scroll;
+  }
+  #position {
+    position: absolute;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    width:20px;
+    height:20px;
+    text-align: center;
   }
 </style>
