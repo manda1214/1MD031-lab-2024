@@ -8,13 +8,14 @@
       <li v-if="burger.gluten">Contains <span class="allergener">gluten</span></li>
       <li>{{ burger.kCal}} kCal</li>
     </ul>
-    <p>Amount to order: {{ amountOrdered }}</p>
-    <button class="addbutton" v-on:click="addBurger">
-      +
-    </button>
-    <button class="subtractbutton" v-on:click="subtractBurger">
-      -
-    </button>
+    <p>Amount to order: {{ amountOrdered }} 
+      <button class="amountbutton" v-on:click="addBurger">
+        +
+      </button>
+      <button class="amountbutton" v-on:click="subtractBurger">
+        -
+      </button>
+    </p>
   </div>
 </template>
 
@@ -62,5 +63,17 @@ export default {
   }
   .allergener { /*för class*/
     font-weight: bold;
+  }
+  .amountbutton {
+    background-color: #556B2F;
+    border-color: #5c2c13;
+    color: #FAF8F1;
+    margin: 0.1em;
+    width: 2em;
+    height: 2em;
+  }
+  .amountbutton:hover {
+    background-color: #FAF8F1; /* changes color when hover over */
+    color:#556B2F;
   }
 </style>

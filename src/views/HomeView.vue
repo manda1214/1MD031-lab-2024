@@ -64,6 +64,9 @@
             <option>Cash</option>
           </select>
         </p>
+        <p>
+          Please place the marker where you wish to deliver your order:
+        </p>
         <div id="picture">
           <div id="map" v-on:click="setLocation">
             <div id='position' v-bind:style="{ left: location.x + 'px', top: location.y + 'px', position: 'absolute'}">
@@ -145,17 +148,28 @@ export default {
       return this.ordernumber++;
     },
     addOrder: function (event) {
-      socket.emit("addOrder", { orderId: this.getOrderNumber(),
-                                details: { x: this.location.x,
-                                           y: this.location.y,
-                                          name: this.fn,
-                                          email: this.em, 
-                                          paymentmethod: this.pmm,
-                                          gender: this.gender, 
-                                         },
-                                orderItems: this.orderedBurgers
-                              }
-                 );
+      if (this.orderedBurgers == {}) {
+        window.alert("Please add burgers to you order.");
+      } else if (this.fn == "") {
+        window.alert("Please fill in your name.");
+      } else if (this.em == "") {
+        window.alert("Please fill in your email.");
+      } else if (this.location.x == 0 && this.location.y == 0) {
+        window.alert("Please select where you wish to deliver your order.");
+      } else {
+        socket.emit("addOrder", { orderId: this.getOrderNumber(),
+                                  details: { x: this.location.x,
+                                            y: this.location.y,
+                                            name: this.fn,
+                                            email: this.em, 
+                                            paymentmethod: this.pmm,
+                                            gender: this.gender, 
+                                          },
+                                  orderItems: this.orderedBurgers
+                                }
+                  );
+          this.resetForm();
+      }
     },
     addToOrder: function (event) {
       this.orderedBurgers[event.name]=event.amount;
@@ -165,7 +179,15 @@ export default {
                     y: event.currentTarget.getBoundingClientRect().top};
       this.location.x = event.clientX - offset.x;
       this.location.y = event.clientY - offset.y;
-    }
+    },
+    resetForm: function () {
+        this.fn = ''; 
+        this.em = '';
+        this.gender = 'Do not wish to provide'; 
+        this.pmm = 'Credit card'; 
+        this.location = { x: 0, y: 0 }; 
+        this.orderedBurgers = {};  // detta funkar inte i gränssnittet :((
+    },
   }
 }
 </script>
@@ -237,7 +259,7 @@ export default {
   .sendbutton {
     margin-top: 1em;
   }
-  button:hover {
+  .sendbutton:hover {
     background-color: #556B2F; /* changes color when hover over */
     color: white;
   }
