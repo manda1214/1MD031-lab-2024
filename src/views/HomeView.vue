@@ -8,7 +8,7 @@
   </header>
         
   <main>
-    <section id="menu">
+    <section id="menu"> <!--menyn, där man lägger in burgare i ordern-->
       <h3>Menu</h3>
       <p>Please enter the burgers you wish to order down below. </p>
       <div class="wrapper">
@@ -19,7 +19,7 @@
       </div>
     </section>
 
-    <section id="customerinformation">
+    <section id="customerinformation"> <!--fylla i information för att beställa-->
       <h3>Customer Information</h3>
       <p>
           Please add information below for delivery. 
@@ -97,7 +97,6 @@ import menu from '../assets/menu.json'
 const socket = io("localhost:3000");
 
 /*
- 
 function MenuItem(name, url, kCal, gluten, lactose) {
   this.name = name;
   this.img = url;
@@ -168,7 +167,7 @@ export default {
                                   orderItems: this.orderedBurgers
                                 }
                   );
-          this.resetForm();
+          /*this.resetForm();*/
       }
     },
     addToOrder: function (event) {
@@ -180,14 +179,15 @@ export default {
       this.location.x = event.clientX - offset.x;
       this.location.y = event.clientY - offset.y;
     },
+    /* får inte menyn till att ställas om...
     resetForm: function () {
         this.fn = ''; 
         this.em = '';
         this.gender = 'Do not wish to provide'; 
         this.pmm = 'Credit card'; 
         this.location = { x: 0, y: 0 }; 
-        this.orderedBurgers = {};  // detta funkar inte i gränssnittet :((
-    },
+        this.orderedBurgers = {};  
+    }, */
   }
 }
 </script>
@@ -238,10 +238,7 @@ export default {
   .wrapper {
     display: grid;
     grid-gap: 1em;
-    grid-template-columns: 15em 15em 15em;
-    /*repeat(auto-fit, minmax(250px, 1fr));
-    width: 100%;
-    box-sizing: border-box; */
+    grid-template-columns: 16em 16em 16em;
   }
 
   /* for customers to fill in */
@@ -259,8 +256,8 @@ export default {
   .sendbutton {
     margin-top: 1em;
   }
-  .sendbutton:hover {
-    background-color: #556B2F; /* changes color when hover over */
+  .sendbutton:hover { /* changes color when hover over */
+    background-color: #556B2F; 
     color: white;
   }
   #map {
